@@ -1,0 +1,6 @@
+option solver gurobi;
+model TSP.mod;
+data TSP.dat;
+solve;
+display N;
+display edge;
