@@ -74,6 +74,13 @@ if __name__ == '__main__':
     # ])
 
     # Paris cities
+    adjacency_matrix = np.array([
+        [0, 1, 1, 0, 0],
+        [1, 0, 0, 1, 0],
+        [1, 0, 0, 0, 1],
+        [0, 1, 0, 0, 1],
+        [0, 0, 1, 1, 0]
+    ])
 
     loops = get_components(adjacency_matrix)
     for loop in loops:
