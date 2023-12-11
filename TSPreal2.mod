@@ -28,9 +28,9 @@ var meal_ate_time{Meals} >= 0;
 var meal_time_difference{Meals} >= 0;
 # use big M instead of travel time
 
-var c_zero{SS_E} binary;
-var c_one{SS_E} binary;
-var c_two{SS_E} binary;
+# var c_zero{SS_E} binary;
+# var c_one{SS_E} binary;
+# var c_two{SS_E} binary;
 
 
 maximize Happiness:
@@ -82,26 +82,26 @@ subject to Degree{i in Locations}:
 # subject to SingleCycle{X in SS_E: (sum{k in Locations} visited[k])}:
 #     sum{i in POW[X], j in POW[X]} visited_edge[i, j] <=  (card(POW[X]) - 1) + M*(card(POW[X]) - sum{i in POW[X]} visited[i]);
 
-subject to SubTour{X in SS_E}:
-sum{i in POW[X], j in POW[X]} visited_edge[i,j] <= (card(POW[X]) - 1) + M*(1-c_zero[X]);
+# subject to SubTour{X in SS_E}:
+# sum{i in POW[X], j in POW[X]} visited_edge[i,j] <= (card(POW[X]) - 1) + M*(1-c_zero[X]);
 
-subject to CalcCzero1{X in SS_E}:
-c_zero[X] <= c_one[X];
+# subject to CalcCzero1{X in SS_E}:
+# c_zero[X] <= c_one[X];
 
-subject to CalcCzero2{X in SS_E}:
-c_zero[X] <= c_two[X];
+# subject to CalcCzero2{X in SS_E}:
+# c_zero[X] <= c_two[X];
 
-subject to CalcCzero3{X in SS_E}:
-c_zero[X] >= c_one[X] + c_two[X] -1;
+# subject to CalcCzero3{X in SS_E}:
+# c_zero[X] >= c_one[X] + c_two[X] -1;
 
-subject to AllVisitedContraint1{X in SS_E}:
-c_one[X] <= (1/card(POW[X]))*sum{i in POW[X]} visited[i];
+# subject to AllVisitedContraint1{X in SS_E}:
+# c_one[X] <= (1/card(POW[X]))*sum{i in POW[X]} visited[i];
 
-subject to AllVisitedContraint2{X in SS_E}:
-c_one[X] >= 1- (card(POW[X]) - sum{i in POW[X]} visited[i]);
+# subject to AllVisitedContraint2{X in SS_E}:
+# c_one[X] >= 1- (card(POW[X]) - sum{i in POW[X]} visited[i]);
 
-subject to LessThanTotalVisitedConstraint1{X in SS_E}:
-c_two[X] <= sum{i in Locations} visited[i] - (sum{i in POW[X]} visited[i]);
+# subject to LessThanTotalVisitedConstraint1{X in SS_E}:
+# c_two[X] <= sum{i in Locations} visited[i] - (sum{i in POW[X]} visited[i]);
 
-subject to LessThanTotalVisitedConstraint2{X in SS_E}:
-c_two[X] <= (1/card(Locations)) * (sum{i in Locations} visited[i] - sum{i in POW[X]} visited[i]);
+# subject to LessThanTotalVisitedConstraint2{X in SS_E}:
+# c_two[X] <= (1/card(Locations)) * (sum{i in Locations} visited[i] - sum{i in POW[X]} visited[i]);
