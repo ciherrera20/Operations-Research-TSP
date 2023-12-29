@@ -75,16 +75,38 @@ if __name__ == '__main__':
 
     # Paris cities
     adjacency_matrix = np.array([
-        [0, 1, 1, 0, 0],
-        [1, 0, 0, 1, 0],
-        [1, 0, 0, 0, 1],
-        [0, 1, 0, 0, 1],
-        [0, 0, 1, 1, 0]
+        [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+        [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+        [0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0],
+        [0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0],
+        [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+        [0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0],
+        [0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0],
+        [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1],
+        [0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+        [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+        [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+        [0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0]
     ])
+
+    names = [
+        'The Getty Center',
+        'Walt Disney Concert Hall',
+        'Grand Central Market',
+        'Broad Infinity Mirrors',
+        'Music Center',
+        'Union Station',
+        'Last Bookstore',
+        'Olvera Street',
+        'Angels Flight',
+        'Westin Bonaventure',
+        'Courage Bagels',
+        'HMC'
+    ]
 
     loops = get_components(adjacency_matrix)
     for loop in loops:
         for i in range(len(loop)):
-            loop[i] += 1
+            loop[i] = names[loop[i]]
 
     print('Loop(s):', *loops)

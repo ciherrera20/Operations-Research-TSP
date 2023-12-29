@@ -42,7 +42,7 @@ subject to LeavingTime{i in Locations}:
 
 # We have to leave the last location with enough time to return to the start
 subject to TotalTime{i in Locations}:
-	leaving_time[i] <= total_time - travel_time[i, starting_location];
+	leaving_time[i] + travel_time[i, starting_location] <= total_time;
 
 # Cycle constraints
 subject to IncomingEdges{i in Locations}:
@@ -68,10 +68,10 @@ subject to NoNonMeals{r in Restaurants}:
 
 # Calculate the time at which we eat meals
 subject to Calc_Meal_Ate_Time1{m in Meals, r in Restaurants}:
-    arrival_time[r] + (1-meal_ate[r, m])*M >= meal_ate_time[m];
+    meal_ate_time[m] <= arrival_time[r] + M * (1 - meal_ate[r, m]);
 
 subject to Calc_Meal_Ate_Time2{m in Meals, r in Restaurants}:
-    meal_ate_time[m] >= arrival_time[r] - (1-meal_ate[r, m])*M;
+    meal_ate_time[m] >= arrival_time[r] - M * (1 - meal_ate[r, m]);
 
 # Calculate meal time difference
 subject to MealTimeDifference1{m in Meals}:

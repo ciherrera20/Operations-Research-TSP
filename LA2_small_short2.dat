@@ -48,7 +48,7 @@ param happiness :=
     10 8
     11 0;
 
-param anger_coef := 1;
+param anger_coef := 0;
 param total_time := 660;  # 11 hours. We leave Mudd at 8 a.m. and get back at 7 p.m.
 param meal_time :=
     Brunch 180  # Brunch at 11 a.m.

@@ -79,6 +79,9 @@ subject to SelfEdgeConstraint{i in Locations}:
 subject to Degree{i in Locations}:
     sum{j in Locations} visited_edge[j,i] <=1;
 
+# subject to VisitOlveraStreet:
+#     visited[7] = 1;
+
 # subject to SingleCycle{X in SS_E: (sum{k in Locations} visited[k])}:
 #     sum{i in POW[X], j in POW[X]} visited_edge[i, j] <=  (card(POW[X]) - 1) + M*(card(POW[X]) - sum{i in POW[X]} visited[i]);
 
